@@ -17,3 +17,10 @@ Content-Type: application/json
         "Step 3."
     ]
 }
+
+
+###
+
+# @name get_all
+GET http://localhost:8080/recipes
+Content-Type: application/json
