@@ -52,3 +52,10 @@ Content-Type: application/json
 
 DELETE http://localhost:8080/recipes/d68u94huqol6k7h083a0
 Content-Type: application/json
+
+
+###
+
+
+GET http://localhost:8080/recipes/search?tag=italian
+Content-Type: application/json
