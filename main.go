@@ -1,7 +1,9 @@
 package main
 
 import (
+	"encoding/json"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -10,10 +12,6 @@ import (
 
 var recipes []Receipe
 
-func init() {
-	recipes = make([]Receipe, 0)
-}
-
 type Receipe struct {
 	ID           string    `json:"id"`
 	Name         string    `json:"name"`
@@ -21,6 +19,10 @@ type Receipe struct {
 	Ingredients  []string  `json:"ingredients"`
 	Instructions []string  `json:"instructions"`
 	PublishedAt  time.Time `json:"publishedAt"`
+}
+
+func ListRecipesHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, recipes)
 }
 
 func NewRecipeHandler(c *gin.Context) {
@@ -37,8 +39,19 @@ func NewRecipeHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, recipe)
 }
 
+func init() {
+	if file, err := os.ReadFile("recipes.json"); err != nil {
+		panic(err)
+	} else {
+		if err = json.Unmarshal(file, &recipes); err != nil {
+			panic(err)
+		}
+	}
+}
+
 func main() {
 	router := gin.Default()
+	router.GET("/recipes", ListRecipesHandler)
 	router.POST("/recipes", NewRecipeHandler)
 	router.Run()
 }
