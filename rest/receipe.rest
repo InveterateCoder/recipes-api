@@ -1,3 +1,11 @@
+# @name get_all
+GET http://localhost:8080/recipes
+Content-Type: application/json
+
+
+###
+
+
 # @name create_recipe
 POST http://localhost:8080/recipes
 Content-Type: application/json
@@ -21,6 +29,19 @@ Content-Type: application/json
 
 ###
 
-# @name get_all
-GET http://localhost:8080/recipes
+
+PUT http://localhost:8080/recipes/d68u599uqolfchufu6r0
 Content-Type: application/json
+
+{
+    "name": "Shrimp scampi pizza",
+    "tags" : ["italian", "pizza", "dinner"],
+    "ingredients": [
+        "pizza dough",
+        "tomato sauce",
+        "olive oil",
+        "7 ounces fresh mozzarella cheese, cut into 1/2-inch cubes",
+        "5-6 large fresh basil leaves"
+    ],
+    "instructions": []
+}
