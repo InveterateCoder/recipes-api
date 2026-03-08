@@ -30,7 +30,7 @@ Content-Type: application/json
 ###
 
 
-PUT http://localhost:8080/recipes/d68u94huqol6k7h083a0
+PUT http://localhost:8080/recipes/69ad8d4672aec495447a7349
 Content-Type: application/json
 
 {
