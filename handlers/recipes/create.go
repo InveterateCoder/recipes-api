@@ -55,5 +55,7 @@ func (h *RecipesHandler) NewRecipeHandler(c *gin.Context) {
 		return
 	}
 	recipe.ID = id
+
+	h.redisClient.Del(ctx, "recipes")
 	c.JSON(http.StatusCreated, recipe)
 }

@@ -73,5 +73,6 @@ func (h *RecipesHandler) UpdateRecipeHandler(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
+	h.redisClient.Del(ctx, "recipes")
 	c.JSON(http.StatusOK, gin.H{"message": "Recipe has been updated"})
 }

@@ -16,14 +16,19 @@
 // swagger:meta
 package recipes
 
-import "go.mongodb.org/mongo-driver/v2/mongo"
+import (
+	"github.com/redis/go-redis/v9"
+	"go.mongodb.org/mongo-driver/v2/mongo"
+)
 
 type RecipesHandler struct {
-	collection *mongo.Collection
+	collection  *mongo.Collection
+	redisClient *redis.Client
 }
 
-func NewRecipeHandler(collection *mongo.Collection) *RecipesHandler {
+func NewRecipeHandler(collection *mongo.Collection, redisClient *redis.Client) *RecipesHandler {
 	return &RecipesHandler{
-		collection: collection,
+		collection:  collection,
+		redisClient: redisClient,
 	}
 }

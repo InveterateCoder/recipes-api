@@ -22,3 +22,12 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://${MONGO_USER}:${MONGO_PASSWORD}@mongo:${MONGO_PORT}/
     depends_on:
      - mongo
+
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - ${REDIS_PORT}:6379
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - ./.redis_data/:/data

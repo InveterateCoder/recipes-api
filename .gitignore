@@ -33,3 +33,4 @@ go.work.sum
 tmp
 
 .db_data
+.redis_data
